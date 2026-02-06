@@ -1,14 +1,21 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <iostream>
-
+#include <_OS/Window.hpp>
 
 
 int main(){
-
+  Window window {Window::GLFWInit(640, 480, "GameEngine")};
+  
   
 
+  while(!glfwWindowShouldClose(window.GetGlfwPointer())){
+    glClear(GL_COLOR_BUFFER_BIT);
+    glfwSwapBuffers(window.GetGlfwPointer());
+    glfwPollEvents();
+  }
 
-  std::cout << "hello world" << std::endl;
+
+  Window::GLFWTerminate();
   return 0;
+  
 }

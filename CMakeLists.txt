@@ -16,7 +16,7 @@ find_package(OpenGL REQUIRED)
 
 
 
-add_executable(GameEngine ./src/main.cpp)
+add_executable(GameEngine ./src/main.cpp ./src/_OS/Window.cpp)
 target_link_libraries(GameEngine PRIVATE glm::glm)
 target_link_libraries(GameEngine PRIVATE glfw)
 target_link_libraries(GameEngine PRIVATE glad::glad)
