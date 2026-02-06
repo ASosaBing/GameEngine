@@ -1,0 +1,32 @@
+.cache/
+build/
+CMakePresets.json
+CMakeUserPresets.json
+
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Files that might be created if you use external drives/network drives
+.Spotlight-V100
+.Trashes
+
+# Windows thumbnail cache
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Windows search indexing
+$RECYCLE.BIN/
+
+# Swap files (created if you use Vim/Nano and it crashes)
+*.swp
+*~
+
+# IDE/Build tool specific
+.editorconfig
+out/
+.vs/
+bin/
+obj/
