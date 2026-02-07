@@ -36,15 +36,17 @@ GLFWwindow* Window::GetGlfwPointer(){
 //static member functions
 GLFWwindow* Window::GLFWInit(int width, int height, const std::string& title) {
   //set the glfw/opengl version
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
- 
+
   //initialize glfw
   if(!glfwInit()){
     throw "failed to initialize glfw";
   }
+
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
 
   GLFWwindow* window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
   glfwMakeContextCurrent(window);

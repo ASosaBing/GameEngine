@@ -16,7 +16,13 @@ find_package(OpenGL REQUIRED)
 
 
 
-add_executable(GameEngine ./src/main.cpp ./src/_OS/Window.cpp)
+add_executable(GameEngine ./src/main.cpp 
+               ./src/_OS/Window.cpp
+               ./src/_Tooling/ErrorCheck.cpp  
+               ./src/_Renderer/_GL/Renderer.cpp  ./src/_Renderer/_GL/VertexBufferObject.cpp
+               ./src/_Renderer/_GL/ElementBufferObject.cpp ./src/_Renderer/_GL/VertexArrayObject.cpp
+               ./src/_Renderer/_GL/Shader.cpp
+)
 target_link_libraries(GameEngine PRIVATE glm::glm)
 target_link_libraries(GameEngine PRIVATE glfw)
 target_link_libraries(GameEngine PRIVATE glad::glad)
@@ -24,7 +30,15 @@ target_link_libraries(GameEngine PRIVATE imgui::imgui)
 target_link_libraries(GameEngine PRIVATE OpenGL::GL)
 
 target_include_directories(GameEngine PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+set(RES_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/res")
+set(RES_DEST "${CMAKE_CURRENT_BINARY_DIR}/res")
 
+add_custom_target(update_res ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${RES_SOURCE} ${RES_DEST}
+    COMMENT "Syncing resources to build directory..."
+)
+
+add_dependencies(GameEngine update_res)
 
 
 
