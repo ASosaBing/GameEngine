@@ -49,7 +49,6 @@ std::string Shader::ParseShader(std::string& filePath){
       ss << line << "\n";
   }
 
-  std::cout << ss.str() << std::endl;
 
   return ss.str();
 }

@@ -21,10 +21,16 @@ void VAO::UnBind() const {
 
 void VAO::EnableAttributes(VAOLayout layout){
   for(int i = 0; i < layout.Attributes; i++){
-    layout.Display(i);
     GLCall(glVertexAttribPointer(i, layout.Size[i], layout.Types[i], layout.Normalized[i],
                                 layout.Stride, (void*)((intptr_t)layout.Offsets[i])));
     GLCall(glEnableVertexAttribArray(i));
   }
 
 }
+
+
+unsigned int VAO::GetID(){
+  return m_RendererID;
+}
+
+

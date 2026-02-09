@@ -2,7 +2,6 @@
 #define VAO_HPP
 #include <_Renderer/_GL/Renderer.hpp>
 #include <_Renderer/_Data/VAOLayout.hpp>
-
 class VAO {
 public:
   VAO();
@@ -25,6 +24,7 @@ public:
 
   void Bind() const;
   void UnBind() const;
+  unsigned int GetID();
 
 
 private:

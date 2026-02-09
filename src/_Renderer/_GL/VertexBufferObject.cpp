@@ -19,3 +19,9 @@ void VBO::Bind() const{
 void VBO::UnBind() const {
   GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 };
+
+unsigned int VBO::GetID(){
+  return m_RendererID;
+}
+
+

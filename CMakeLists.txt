@@ -21,7 +21,7 @@ add_executable(GameEngine ./src/main.cpp
                ./src/_Tooling/ErrorCheck.cpp  
                ./src/_Renderer/_GL/Renderer.cpp  ./src/_Renderer/_GL/VertexBufferObject.cpp
                ./src/_Renderer/_GL/ElementBufferObject.cpp ./src/_Renderer/_GL/VertexArrayObject.cpp
-               ./src/_Renderer/_GL/Shader.cpp
+               ./src/_Renderer/_GL/Shader.cpp ./src/_Renderer/_Primitives/TemporaryMesh.cpp
 )
 target_link_libraries(GameEngine PRIVATE glm::glm)
 target_link_libraries(GameEngine PRIVATE glfw)
@@ -40,5 +40,5 @@ add_custom_target(update_res ALL
 
 add_dependencies(GameEngine update_res)
 
-
+target_compile_options(GameEngine PRIVATE -g)
 

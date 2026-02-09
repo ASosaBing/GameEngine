@@ -22,6 +22,8 @@ public:
       return *this;
   }
 
+  unsigned int GetID();
+
 
 
   void Bind() const;
