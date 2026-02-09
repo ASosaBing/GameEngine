@@ -6,6 +6,12 @@ project(GameEngine)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+if(UNIX AND NOT APPLE)
+    # Prefer the modern GLVND libraries on Linux
+    set(OpenGL_GL_PREFERENCE GLVND)
+endif()
+
+
 
 find_package(glfw3 CONFIG REQUIRED)
 find_package(glad CONFIG REQUIRED)

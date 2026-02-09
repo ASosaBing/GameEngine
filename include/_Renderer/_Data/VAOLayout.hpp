@@ -20,8 +20,24 @@ struct VAOLayout{
     throw "Invalid type";
   }
 
+  void Display(int attribute){
+    ASSERT(attribute < 10);
+    std::cout << "Attributes: " << Attributes << std::endl;
+    std::cout << "Stride: " << Stride << std::endl;
+    std::cout << "Size Type:" << SizeOfType[attribute] << std::endl;
+    std::cout << "Size: " << Size[attribute] << std::endl;
+    std::cout << "Type: " << Types[attribute] << std::endl;
+    std::cout << "offset: " << Offsets[attribute] << std::endl;
+    std::cout << "Normalized: " << Normalized[attribute] << std::endl;
+  }
+
+
+
+
+
+};
   template <>
-  void Push<Vertex>(int length, bool normalized){
+  inline void VAOLayout::Push<Vertex>(int length, bool normalized){
     ASSERT((Attributes < 10) && length > 0 && length < 5);
     Attributes++;
     Stride += sizeof(Vertex) * length;
@@ -37,8 +53,10 @@ struct VAOLayout{
 
   };
 
+
+
   template <>
-  void Push<unsigned char>(int length, bool normalized){
+  inline void VAOLayout::Push<unsigned char>(int length, bool normalized){
     ASSERT((Attributes < 10) && length > 0 && length < 5);
     Attributes++;
     Stride += sizeof(unsigned char);
@@ -52,10 +70,10 @@ struct VAOLayout{
     Offsets[Attributes - 1] = offset;
     Normalized[Attributes - 1] = normalized;
 
-  };
+  }
 
   template <>
-  void Push<short>(int length, bool normalized){
+  inline void VAOLayout::Push<short>(int length, bool normalized){
     ASSERT((Attributes < 10) && length > 0 && length < 5);
     Attributes++;
     Stride += sizeof(short) * length;
@@ -68,10 +86,10 @@ struct VAOLayout{
     }
     Offsets[Attributes - 1] = offset;
     Normalized[Attributes - 1] = normalized;
-  };
+  }
 
   template <>
-  void Push<float>(int length, bool normalized){
+  inline void  VAOLayout::Push<float>(int length, bool normalized){
     ASSERT((Attributes < 10) && length > 0 && length < 5);
     Attributes++;
     int offset = 0;
@@ -88,22 +106,6 @@ struct VAOLayout{
 
    
 
-  };
-
-  void Display(int attribute){
-    ASSERT(attribute < 10);
-    std::cout << "Attributes: " << Attributes << std::endl;
-    std::cout << "Stride: " << Stride << std::endl;
-    std::cout << "Size Type:" << SizeOfType[attribute] << std::endl;
-    std::cout << "Size: " << Size[attribute] << std::endl;
-    std::cout << "Type: " << Types[attribute] << std::endl;
-    std::cout << "offset: " << Offsets[attribute] << std::endl;
-    std::cout << "Normalized: " << Normalized[attribute] << std::endl;
   }
 
-};
-
-
-
-
-#endif // !VAOLAYT_HPP
+#endif
